@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
 
 import EventsList from '../components/EventsList';
-import { useLoaderData } from 'react-router';
+import { json, useLoaderData } from 'react-router';
 
 function EventsPage() {
-    const events = useLoaderData()
+    const data = useLoaderData()
+
+    const events = data.events
 
     return (
         <>
@@ -19,9 +20,8 @@ export async function loader() {
     const response = await fetch('http://localhost:8080/events');
 
     if (!response.ok) {
-
+        return json({message: 'Could not find events.'}, {status: 500})
     } else {
-        const resData = await response.json();
-        return resData.events
+        return response
     }
 }
