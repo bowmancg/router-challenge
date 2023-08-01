@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageContent from '../components/PageContent';
 
 const HomePage = () => {
 return (
     <>
-      <h1>Home Page</h1>
-      <p>Go to <Link to='events'>Event List</Link></p>
+      <PageContent title='Welcome!'>
+        <p>Browse Events Now!</p>
+      </PageContent>
     </>
     );
 }
